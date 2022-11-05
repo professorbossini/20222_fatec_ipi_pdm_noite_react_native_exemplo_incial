@@ -1,11 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react'
+//hooks do React
 
 export default function App() {
+  const [contador, setContador] = useState(0)
+
+  const incrementar = () => {
+    setContador(contador + 1) 
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text>{contador}</Text>
+      <Button 
+        title='Incrementar'
+        onPress={incrementar}
+      />
     </View>
   );
 }
