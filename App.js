@@ -1,6 +1,7 @@
 import {
   Button,  
-  StyleSheet, 
+  StyleSheet,
+  Text, 
   TextInput, 
   View 
 } from 'react-native';
@@ -9,6 +10,7 @@ import { useState } from 'react';
 
 export default function App() {
   const [lembrete, setLembrete] = useState('')
+  const [lembretes, setLembretes] = useState([])
   const capturarTexto = (lembreteDigitado) => {
 
     lembreteDigitado = lembreteDigitado.toUpperCase()
@@ -19,9 +21,16 @@ export default function App() {
   }
 
   const adicionarLembrete = () => {
-    console.log("Adicionando...", lembrete)
-    setLembrete('')
-  }  
+    if (lembrete.length > 0){
+      setLembretes(lembretes => {
+        const aux = [lembrete, ...lembretes]
+        setLembrete('')
+        return aux
+      })
+    }
+  } 
+  // fazer café -> <Text>fazer café</Text> 
+  //  ver um filme -> <Text>ver um filme</Text>
   //Single Source of Truth
   return (
     <View style={{padding: 40}}>
@@ -38,7 +47,9 @@ export default function App() {
         />
       </View>
       <View>
-
+        {
+          lembretes.map(l => <Text>{l}</Text>)
+        }
       </View>
       
     </View>
