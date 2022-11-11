@@ -3,7 +3,8 @@ import {
   Button,  
   StyleSheet,
   Text, 
-  TextInput, 
+  TextInput,
+  ToastAndroid, 
   View 
 } from 'react-native';
 
@@ -30,28 +31,9 @@ export default function App() {
       })
     }
     else{
-      Alert.alert(
-        "Digite algo",
-        "Você precisa digitar o lembrete",
-        [
-          {
-            text: "Cancelar",
-            style: "cancel"
-          },
-          {
-            text: "OK",
-            style: "default",
-            onPress: () => Alert.alert("beleza você entendeu")
-          },
-          {
-            text: "TErceiro botão"
-          }
-        ],
-        {
-          cancelable: true,
-          onDismiss: () => Alert.alert ("Você se rebelou e clicou fora")
-        }
-      )
+      // ToastAndroid.show('Digite um lembrete!', ToastAndroid.LONG)
+      ToastAndroid.showWithGravity("Digite um lembrete", ToastAndroid.LONG, ToastAndroid.BOTTOM)
+
     }
   } 
   // fazer café -> <Text>fazer café</Text> 
