@@ -1,4 +1,5 @@
 import {
+  Alert,
   Button,  
   StyleSheet,
   Text, 
@@ -27,6 +28,30 @@ export default function App() {
         setLembrete('')
         return aux
       })
+    }
+    else{
+      Alert.alert(
+        "Digite algo",
+        "Você precisa digitar o lembrete",
+        [
+          {
+            text: "Cancelar",
+            style: "cancel"
+          },
+          {
+            text: "OK",
+            style: "default",
+            onPress: () => Alert.alert("beleza você entendeu")
+          },
+          {
+            text: "TErceiro botão"
+          }
+        ],
+        {
+          cancelable: true,
+          onDismiss: () => Alert.alert ("Você se rebelou e clicou fora")
+        }
+      )
     }
   } 
   // fazer café -> <Text>fazer café</Text> 
